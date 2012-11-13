@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en"><!--<![endif]-->
+  <head data-hook="inside_head">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Sarina Diamonds and Jewelry  - Emilie</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+  <meta content="diamond rings, jewelry, custom made, wedding, engagement, rings" name="keywords">
+  <meta content="Sarina diamonds is a family business taken to the web. We believe in eternal beauty, top quality and maximum transparency, especially when it comes to choosing your diamond." name="description">
+  <link href="http://sarinadiamonds.herokuapp.com/assets/favicon-e117df2d4fe828c35ad3fcad05af1861.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link href="product_page_files/all-e4fb3ab7568e29b63217df326dd10f22.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="main_style.css" media="screen" rel="stylesheet" type="text/css">
+  <meta content="authenticity_token" name="csrf-param">
+  <meta content="fU2Nra8RD5TInIJB3D9mPDaJLWRX3DL86D8pp30HJrE=" name="csrf-token">
+  <script src="product_page_files/jirafe.js" defer="defer" async="" type="text/javascript"></script><script src="product_page_files/all-3a589eb8fc0070d15abc1aa0bb3bfd83.js" type="text/javascript"></script>
+
+  <!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+  <script type="text/javascript">
+    //<![CDATA[
+    // First I need to set up a mapping for the variants on the screen so I can easily grab their prices
+
+    var variant_price_map={};
+
+
+
+    // we start off the page w/ a known base price, a known set of
+    // possible configurations (ad_hoc_option_values), and no customizations
+
+    // 'updatePrice()' takes the base price + current 'configuration' adjustments + 'customization' adjustments
+
+    var base_price=450.0;
+
+    // keep track of ad_hoc adjustments
+    var price_modifier_map={};
+
+        price_modifier_map[36]= 0.0;
+        price_modifier_map[37]= 0.0;
+        price_modifier_map[38]= 100.0;
+        price_modifier_map[39]= 100.0;
+        price_modifier_map[40]= 450.0;
+        price_modifier_map[45]= 0.0;
+        price_modifier_map[48]= 0.0;
+        price_modifier_map[49]= 0.0;
+        price_modifier_map[50]= 0.0;
+        price_modifier_map[51]= 0.0;
+        price_modifier_map[41]= 0.0;
+        price_modifier_map[42]= 0.0;
+        price_modifier_map[43]= 0.0;
+        price_modifier_map[44]= 0.0;
+        price_modifier_map[46]= 200.0;
+        price_modifier_map[47]= 190.0;
+        price_modifier_map[69]= 0.0;
+        price_modifier_map[52]= 0.0;
+        price_modifier_map[53]= 0.0;
+        price_modifier_map[54]= 0.0;
+        price_modifier_map[55]= 0.0;
+        price_modifier_map[56]= 0.0;
+        price_modifier_map[57]= 0.0;
+        price_modifier_map[58]= 0.0;
+        price_modifier_map[59]= 0.0;
+        price_modifier_map[60]= 0.0;
+        price_modifier_map[61]= 0.0;
+        price_modifier_map[62]= 0.0;
+        price_modifier_map[63]= 0.0;
+        price_modifier_map[64]= 0.0;
+        price_modifier_map[65]= 0.0;
+        price_modifier_map[66]= 0.0;
+        price_modifier_map[67]= 0.0;
+        price_modifier_map[68]= 0.0;
+        price_modifier_map[70]= 0.0;
+
+
+    var delay = (function(){
+      var timer = 0;
+      return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+      };
+    })();
+
+    $(function() {
+
+      // watch for variant changes
+      $("#product-variants input[type='radio']").change(function() {
+        updatePrice();
+      });
+
+      // 'watch' our configurations
+      $('.ad-hoc-option-select').change(function() {
+
+        // get _every_ option drop down and recalculate product price
+        // do this immediately, since we are not waiting on the results of the exlusions post
+        updatePrice();
+      });
+
+      updatePrice(); // set the initial price
+    } // ready
+  ); // ready
+
+  // stolen from http://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric
+  function isNumeric(input) {
+    return (input - 0) == input && input.length > 0;
+  }
+
+  function compute_variant_price_diff(base_price) {
+    var variant_price=0;
+
+    $("#product-variants input[type='radio']:checked").each (function() {
+      variant_price=variant_price_map[$(this).val()];
+    });
+
+      return variant_price;  // don't return a negative number if we don't have any variants
+
+  }
+
+  function compute_configuration_price() {
+    var configuration_price=0;
+
+    // for selects or checkboxes
+    $("select.ad-hoc-option-select, input:checked.ad-hoc-option-select").each(function() {
+      // the :prompt=>'None' in the select tag yields an empty string, which I can't use in the price calcuation
+      var val=$(this).val();
+
+      if (isNumeric(val)) {
+        configuration_price+=price_modifier_map[val];
+      }
+    });
+
+    return configuration_price;
+  }
+
+  function compute_customization_price() {
+    var price=0;
+
+    // for selects or checkboxes
+    $(".customization_price").each(function() {
+      var val=$(this).val();
+
+      if (isNumeric(val)) {
+        price  +=  parseFloat(val);
+      }
+    });
+
+    return price;
+  }
+
+
+  function updatePrice() {
+
+    var cur_variant_price_diff       = compute_variant_price_diff(base_price);
+    var cur_configuration_price =  compute_configuration_price();
+    var cur_customization_price =  compute_customization_price();
+    var cur_price =base_price + cur_variant_price_diff + cur_configuration_price + cur_customization_price;
+
+    $('.price.selling').text(cur_price.toFixed(2)).formatCurrency({region: "en"});
+  }
+
+  //]]>
+  </script>
+  <script type="text/javascript" id="analytics">
+    var jirafe= {"id":"45714","product":{"name":"Emilie","price":"450.0","sku":"S0017","categories":["jewelry/rings/diamond-setting/solitaire","jewelry/rings/engagement-sets"]}};
+    (function(){
+    var d=document,g=d.createElement('script'),s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript',g.defer=g.async=true;g.src=d.location.protocol+'//c.jirafe.com/jirafe.js';
+    s.parentNode.insertBefore(g, s);
+    })();
+  </script>
+  </head>
+  <body class="one-col" id="product-details" data-hook="body">
+<div class="container">
+    <header id="header" class="row" data-hook="">
+    <figure id="logo" class="columns alpha six" data-hook=""><a href="http://sarinadiamonds.herokuapp.com/" class="work"><img alt="Logo" src="assets/sarina_main_logo.png"/></a></figure>
+    <nav id="top-nav-bar" class="columns omega ten">
+        <ul id="nav-bar" class="inline" data-hook="">
+        <li id="link-to-login"><a href="http://sarinadiamonds.herokuapp.com/login">Login</a></li>
+        <li id="search-bar" data-hook="">
+            <form accept-charset="UTF-8" action="/products" method="get">
+            <div style="margin:0;padding:0;display:inline">
+                <input name="utf8" value="✓" type="hidden">
+              </div>
+            <select id="taxon" name="taxon">
+                <option selected="selected" value="">All departments</option>
+                <option value="1">Diamond Cut</option>
+                <option value="4">Jewelry</option>
+              </select>
+            <input id="keywords" name="keywords" placeholder="Search" type="search">
+            <input value="Search" type="submit">
+          </form>
+          </li>
+      </ul>
+      </nav>
+    <nav class="columns alpha omega sixteen">
+        <ul id="main-nav-bar" class="inline" data-hook="">
+        <li id="home-link" data-hook=""><a href="http://sarinadiamonds.herokuapp.com/">Home</a></li>
+        <li id="link-to-cart" data-hook=""><a href="http://sarinadiamonds.herokuapp.com/cart" class="empty">Cart: (Empty)</a></li>
+      </ul>
+      </nav>
+  </header>
+    <div id="wrapper" class="row" data-hook="">
+    <div id="content" class="columns omega  sixteen alpha " data-hook="">
+        <div data-hook="product_show" itemscope="" itemtype="http://schema.org/Product">
+        <div class="columns six alpha" data-hook="product_left_part">
+            <div class="row" data-hook="product_left_part_wrap">
+            <div id="main-image">
+                <div id="my-wrap">
+                <div id="wrap" style="top:0px;z-index:9999;position:relative;"><a style="position: relative; display: block;" href="http://s3.amazonaws.com/SarinaDiamonds_production/app/public/spree/products/7/large/IMG_22739.jpg?1340560567" class="cloud-zoom" id="zoom1" rel="adjustX: 20, adjustY: 20"><img style="display: block;" alt="Emilie" src="product_page_files/IMG_22739.jpg"></a>
+                    <div class="mousetrap" style="background-image: url(&quot;.&quot;); z-index: 999; position: absolute; width: 240px; height: 240px; left: 0px; top: 0px; cursor: pointer;"></div>
+                  </div>
+              </div>
+              </div>
+            <div id="thumbnails"> 
+                <!-- no need for thumnails unless there is more then one image -->
+                <ul id="product-thumbnails" class="thumbnails inline" data-hook="">
+                <li class="tmb-all selected" id="tmb-7"><a href="http://s3.amazonaws.com/SarinaDiamonds_production/app/public/spree/products/7/product/IMG_22739.jpg?1340560567"><img alt="Img_22739" src="product_page_files/IMG_22739_002.jpg"></a></li>
+                <li class="tmb-all" id="tmb-8"><a href="http://s3.amazonaws.com/SarinaDiamonds_production/app/public/spree/products/8/product/IMG_22754.jpg?1340560588"><img alt="Img_22754" src="product_page_files/IMG_22754.jpg"></a></li>
+              </ul>
+              </div>
+            <script type="text/javascript">
+//<![CDATA[
+$('.cloud-zoom').CloudZoom();
+//]]>
+</script>
+            <div data-hook="product_properties">
+                <h6 class="product-section-title">Properties</h6>
+                <table id="product-properties" class="table-display" data-hook="" width="100%">
+                <tbody>
+                    <tr class="even">
+                    <td><strong>Center Stone Size</strong></td>
+                    <td>0.3 - 2.5 CARAT</td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+          </div>
+          </div>
+        <div class="columns ten omega" data-hook="product_right_part">
+            <div class="row" data-hook="product_right_part_wrap">
+
+            <div id="product-description" data-hook="product_description">
+                <h1 class="product-title" itemprop="name">Emilie</h1>
+                <div itemprop="description" data-hook="description"> This product has no description </div>
+                <div id="cart-form" data-hook="cart_form">
+                <form enctype="multipart/form-data" accept-charset="UTF-8" action="http://sarinadiamonds.herokuapp.com/orders/populate" method="post">
+                <div style="margin:0;padding:0;display:inline">
+                    <input name="utf8" value="✓" type="hidden">
+                    <input name="authenticity_token" value="fU2Nra8RD5TInIJB3D9mPDaJLWRX3DL86D8pp30HJrE=" type="hidden">
+                  </div>
+                  
+                <div id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                   
+                   <!--//////////////////////////////////// Left Column ///////////////////////////////////////-->
+                    
+                    <div data-hook="product_price" id="ad_hoc_options" class="columns five  alpha ">
+                    
+                        <h2>Ring Options</h2>
+                        <dl>
+                            <dt>Metal</dt>
+                            <dd>
+                            <select class="ad-hoc-option-select required" id="ad_hoc_option_values_4" name="ad_hoc_option_values[4]">
+                                <option selected="selected" value="">None</option>
+                                <option value="36">Yellow gold 14K </option>
+                                <option value="37">Red gold 14K </option>
+                                <option value="38">Yellow gold 18K  (Add $100.00)</option>
+                                <option value="39">Red gold 18K  (Add $100.00)</option>
+                                <option value="40">Platinum  (Add $450.00)</option>
+                              </select>
+                          </dd>
+                            <dt>Center Stone Size</dt>
+                            <dd>
+                            <select class="ad-hoc-option-select required" id="ad_hoc_option_values_5" name="ad_hoc_option_values[5]">
+                                <option selected="selected" value="">None</option>
+                                <option value="45">1.25 </option>
+                                <option value="48">1.90 </option>
+                                <option value="49">2 </option>
+                                <option value="50">2.25 </option>
+                                <option value="51">2.50 </option>
+                                <option value="41">0.5 </option>
+                                <option value="42">0.75 </option>
+                                <option value="43">0.9 </option>
+                                <option value="44">1 </option>
+                                <option value="46">1.50  (Add $200.00)</option>
+                                <option value="47">1.75  (Add $190.00)</option>
+                              </select>
+                          </dd>
+                            <dt class="help" title="The size of the fucking ring">Ring Size</dt>
+                            <dd>
+                            <select class="ad-hoc-option-select" id="ad_hoc_option_values_6" name="ad_hoc_option_values[6]">
+                                <option selected="selected" value="">None</option>
+                                <option value="69">11.5 </option>
+                                <option value="52">3 </option>
+                                <option value="53">3.5 </option>
+                                <option value="54">4 </option>
+                                <option value="55">4.5 </option>
+                                <option value="56">5 </option>
+                                <option value="57">5.5 </option>
+                                <option value="58">6 </option>
+                                <option value="59">6.5 </option>
+                                <option value="60">7 </option>
+                                <option value="61">7.5 </option>
+                                <option value="62">8 </option>
+                                <option value="63">8.5 </option>
+                                <option value="64">9 </option>
+                                <option value="65">9.5 </option>
+                                <option value="66">10 </option>
+                                <option value="67">10.5 </option>
+                                <option value="68">11 </option>
+                                <option value="70">12 </option>
+                              </select>
+                          </dd>
+                          </dl>
+                          
+                        <!--<div id="product-price">
+              <h6 class="product-section-title">Price</h6>
+              <div><span class="price selling" itemprop="price">$450.00</span></div>
+            </div>
+    
+            <div class="add-to-cart">
+                <input class="title" id="variants_8" name="variants[8]" value="1" type="number">
+                <button class="large primary" id="add-to-cart-button" type="submit">
+                  Add To Cart
+    </button>        </div>--> 
+                        
+                  </div><!-- Left Column -->
+                  
+                  <!--//////////////////////////////////// Right Column ///////////////////////////////////////-->
+                  <div class="columns five  alpha " id="diamond_options">
+                        <h2>Diamond Options</h2>
+                        <label for="amount" title="Carat range" class="help">Carat range:</label>
+                        <input value="0.25 - 6  Carat" id="amount" style="border:0; color:#f6931f; font-weight:bold;" type="text">
+                        <div id="slider-range"></div>
+
+                 </div><!-- Right Column -->
+                      
+                      </div>
+                      
+                    <h2 id="starting_from">starting from: $125.00</h2>
+                    
+                    <table id="ring_suggestions">
+                        <thead>
+                        <tr>
+                            <td><span>Carat</span></td>
+                            <td><span>Color</span></td>
+                            <td><span>Clarity</span></td>
+                            <td><span>Price</span></td>
+                            <td></td>
+                          </tr>
+                      </thead>
+                        <tbody>
+                        <tr>
+                            <td><span>15</span></td>
+                            <td><span>HIV</span></td>
+                            <td><span>SI1</span></td>
+                            <td><span>200$</span></td>
+                            <td><div>select</div></td>
+                          </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                      </tbody>
+                      </table>
+                    </div>
+                    
+                  </form>
+
+          </div>
+
+            <div id="taxon-crumbs" data-hook="" class="alpha columns five omega">
+            <h6 class="product-section-title">Look for similar items</h6>
+            <div data-hook="product_taxons">
+                <ul id="similar_items_by_taxon" data-hook="">
+                <li><a href="http://sarinadiamonds.herokuapp.com/t/jewelry/rings/diamond-setting/solitaire">Solitaire</a></li>
+                <li><a href="http://sarinadiamonds.herokuapp.com/t/jewelry/rings/engagement-sets">Engagement Sets</a></li>
+              </ul>
+              </div>
+          </div>
+          </div>
+      </div>
+      </div>
+  </div>
+  </div>
+<footer id="footer" class="alpha omega sixteen columns" data-hook="">
+    <div id="footer-left" class="columns alpha eight" data-hook="">All rights reserved <a href="http://sarinadiamonds.herokuapp.com/">SarinaDiamonds.com</a> </div>
+    <div id="footer-right" class="columns omega eight" data-hook=""></div>
+  </footer>
+</div>
+</body>
+</html>
