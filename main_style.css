@@ -547,6 +547,7 @@ h2#starting_from {
 	float:right;
 	width:134px;
 	height:44px;
+	color:#959595;
 	border-radius:5px;
 	margin-top:-10px;
 	border:1px solid #acacac;
@@ -586,5 +587,6 @@ h2#starting_from {
     padding-left: 23px;
     text-align: center;
     width: 97px;
+	text-shadow:1px 1px 0px #fff;
 }
 
