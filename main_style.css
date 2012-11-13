@@ -250,7 +250,6 @@ h5.featured_products {
 	width:960px;
 	line-height:64px;
 	background:url(assets/slider_shadow.png) top center no-repeat;
-	margin-top:-20px;
 	text-transform:uppercase;
 }
 
@@ -546,7 +545,46 @@ h2#starting_from {
 
 #consult_btn {
 	float:right;
-	width:116px;
-	
+	width:134px;
+	height:44px;
+	border-radius:5px;
+	margin-top:-10px;
+	border:1px solid #acacac;
+	box-shadow:inset 1px 1px 0 #fff, 0px 1px 3px rgba(0, 0, 0, 0.1);
+	background: #f0efea;
+	background: -moz-linear-gradient(top,  #f0efea 0%, #e8e5dc 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0efea), color-stop(100%,#e8e5dc));
+	background: -webkit-linear-gradient(top,  #f0efea 0%,#e8e5dc 100%);
+	background: -o-linear-gradient(top,  #f0efea 0%,#e8e5dc 100%);
+	background: -ms-linear-gradient(top,  #f0efea 0%,#e8e5dc 100%);
+	background: linear-gradient(to bottom,  #f0efea 0%,#e8e5dc 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0efea', endColorstr='#e8e5dc',GradientType=0 );
+}
+
+#consult_btn:hover {
+	background: #dddbd2;
+	background: -moz-linear-gradient(top,  #dddbd2 0%, #f0efea 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dddbd2), color-stop(100%,#f0efea));
+	background: -webkit-linear-gradient(top,  #dddbd2 0%,#f0efea 100%);
+	background: -o-linear-gradient(top,  #dddbd2 0%,#f0efea 100%);
+	background: -ms-linear-gradient(top,  #dddbd2 0%,#f0efea 100%);
+	background: linear-gradient(to bottom,  #dddbd2 0%,#f0efea 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddbd2', endColorstr='#f0efea',GradientType=0 );
+	box-shadow:inset 1px 1px 1px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+#consult_btn span {
+  background: url(assets/consult_btn_bg.png) no-repeat scroll left center;
+    float: right;
+    font-size: 11px;
+    font-weight: bold;
+    height: 30px;
+    letter-spacing: 1px;
+    line-height: 13px;
+    margin: 11px 5px 0 0;
+    padding-left: 23px;
+    text-align: center;
+    width: 97px;
 }
 
