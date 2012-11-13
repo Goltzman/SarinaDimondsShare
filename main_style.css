@@ -113,21 +113,21 @@ nav#taxonomies.sidebar-item ul li {
 	margin-right:10px;
 }
 
-#round_cut_taxon {
+.round_taxon {
 	background:url(assets/round_shape_icon.png) 0 0 no-repeat;
 	cursor:pointer;
 }
 
-#round_cut_taxon:hover {
+.round_taxon:hover {
 	background:url(assets/round_shape_icon.png) 0 -54px no-repeat;
 }
 
-#princess_cut_taxon {
+.princess_taxon {
 	background:url(assets/princess_shape_icon.png) 0 0 no-repeat;
 	cursor:pointer;
 }
 
-#princess_cut_taxon:hover {
+.princess_taxon:hover {
 	background:url(assets/princess_shape_icon.png) 0 -54px no-repeat;
 }
 
