@@ -46,6 +46,10 @@ input[type="search"] {
 	height:163px;
 }
 
+.container .sixteen.columns {
+    width: 960px;
+}
+
 #main-nav-bar {
 	background:url(assets/nav_bg.png) center top no-repeat;
 }
@@ -81,6 +85,7 @@ nav #main-nav-bar li#link-to-cart {
 	border-top:1px solid #d9d0bf;
 	padding-top:20px;
 	background:url(assets/nav_bg.png) top no-repeat;
+	margin-top:-1px;
 }
 
 nav#taxonomies .taxonomy-root {
@@ -118,6 +123,12 @@ nav#taxonomies.sidebar-item ul li {
 	cursor:pointer;
 }
 
+.round_taxon a {
+	display:inline-block;
+	width:55px;
+	height:54px;
+}
+
 .round_taxon:hover {
 	background:url(assets/round_shape_icon.png) 0 -54px no-repeat;
 }
@@ -129,6 +140,12 @@ nav#taxonomies.sidebar-item ul li {
 
 .princess_taxon:hover {
 	background:url(assets/princess_shape_icon.png) 0 -54px no-repeat;
+}
+
+.princess_taxon a {
+	display:inline-block;
+	width:55px;
+	height:54px;
 }
 
 nav#taxonomies.sidebar-item .taxons-list.by_jewelry li {
@@ -281,6 +298,9 @@ h5.featured_products {
 .jcarousel-skin-tango .jcarousel-prev-horizontal:hover {
 	background:url(assets/home_FP_back_bg.png) 0 -250px no-repeat;
 }
+#main-image {
+	width:240px;
+}
 
 #main-image:after {
 	content:"";
@@ -293,6 +313,10 @@ h5.featured_products {
 	margin-left: 208px;
     margin-top: -32px;
 	cursor:pointer;
+}
+
+#main-image:hover:after {
+	display:none;
 }
 
 #main-image .mousetrap {
@@ -364,9 +388,10 @@ h5.featured_products {
 	background:none;
 	color:#000 !important;
 	margin-top:3px;
+	width:150px;
 }
 
-h2 {
+h3 {
 	font-family: 'Telex', sans-serif;
 	text-transform:uppercase;
 	color:#403937;
@@ -517,3 +542,5 @@ h2#starting_from {
 	border:none;
 	width:240px;
 }
+
+#
