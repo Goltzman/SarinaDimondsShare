@@ -547,7 +547,7 @@ h2#starting_from {
 	float:right;
 	width:134px;
 	height:44px;
-	color:#959595;
+	color:#727272;
 	border-radius:5px;
 	margin-top:-10px;
 	border:1px solid #acacac;
@@ -572,7 +572,7 @@ h2#starting_from {
 	background: linear-gradient(to bottom,  #dddbd2 0%,#f0efea 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddbd2', endColorstr='#f0efea',GradientType=0 );
 	box-shadow:inset 1px 1px 1px rgba(0, 0, 0, 0.1), 0px 1px 3px rgba(0, 0, 0, 0.1);
-
+	cursor:pointer;
 }
 
 #consult_btn span {
@@ -581,10 +581,10 @@ h2#starting_from {
     font-size: 11px;
     font-weight: bold;
     height: 30px;
-    letter-spacing: 1px;
     line-height: 13px;
-    margin: 11px 5px 0 0;
+    margin: 8px 5px 0 0;
     padding-left: 23px;
+	padding-top:3px;
     text-align: center;
     width: 97px;
 	text-shadow:1px 1px 0px #fff;
