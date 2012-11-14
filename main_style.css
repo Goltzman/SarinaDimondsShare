@@ -24,10 +24,11 @@ input[type="search"] {
 	margin-bottom:0px;
 }
 
-#search-bar input[type="submit"] {
+#search-bar .search_btn {
+	display:inline-block;
 	background:url(assets/search_btn_bg.jpg) repeat-x;
-	height:23px;
-	line-height:23px;
+	height:21px;
+	line-height:21px;
 	font-family: 'Telex', sans-serif;
 	color:#e8e3d4;
 	font-size:13px;
@@ -35,9 +36,12 @@ input[type="search"] {
 	text-shadow:-1px -1px 0px #000;
 	box-shadow: inset 1px 1px 0px rgba(255,255,255, 0.3);
 	border:1px solid #333;
+	width:60px;
+	text-align:center;
+	cursor:pointer;
 }
 
-#search-bar input[type="submit"]:hover {
+#search-bar .search_btn:hover {
 	box-shadow: inset 1px 1px 0px rgba(0,0,0, 0.2);
 }
 
