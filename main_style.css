@@ -8,7 +8,14 @@ body {
 }
 
 a:hover {
-	color:#000;
+	color:#000 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color:#403937;
+	font-family: 'Telex', sans-serif;
+	font-weight:normal;
+	text-transform:uppercase;
 }
 
 input[type="search"] {
@@ -63,7 +70,7 @@ nav #main-nav-bar li a{
 	margin-right:10px;
 }
 
-nav #main-nav-bar li#link-to-cart a {
+nav #main-nav-bar li#sharing_caring a {
 	color:#403937;
 }
 
@@ -76,16 +83,22 @@ nav #main-nav-bar {
 	border-bottom:1px solid #FFF;
 }
 
-nav #main-nav-bar li#link-to-cart {
-	background:url(assets/cart_icon.png) left center no-repeat;
-	margin-right:-20px;
+nav #main-nav-bar li#sharing_caring {
+	float:right;
+}
+
+#sharing_caring .sharing_title {
+	color:#333;
+	font-size:12px;
+	padding:3px 10px;
+	font-weight:normal;
+	text-transform:none;
+	border-bottom:1px solid #D9D0BF;
 }
 
 #wrapper {
-	border-top:1px solid #d9d0bf;
 	padding-top:20px;
 	background:url(assets/nav_bg.png) top no-repeat;
-	margin-top:-1px;
 }
 
 nav#taxonomies .taxonomy-root {
@@ -399,7 +412,7 @@ h3 {
 	font-weight:normal;
 }
 
-dl dt {
+#inside-product-cart-form dl dt {
 	font-weight:normal;
 	text-transform:none;
 	padding: 5px 5px 5px 22px;
@@ -533,7 +546,7 @@ h2#starting_from {
 }
 
 #ring_suggestions tbody tr:hover {
-	background:#ece5d7;
+	background:#dddbd7;
 	color:#fff;
 }
 
@@ -592,5 +605,6 @@ h2#starting_from {
     text-align: center;
     width: 97px;
 	text-shadow:1px 1px 0px #fff;
+	letter-spacing:0.5px;
 }
 
