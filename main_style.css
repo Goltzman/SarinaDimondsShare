@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size:13px;
 	font-weight:normal;
 	text-shadow:-1px -1px 0px #000;
-	box-shadow: inset 1px 1px 0px rgba(255,255,255, 0.3);
+	box-shadow: inset 1px 1px 0px rgba(255,255,255, 0.2);
 	border:1px solid #333;
 	text-align:center;
 	cursor:pointer;
@@ -38,7 +38,7 @@ a.button {
 	display:inline;
 }
 
-.button , .primary:hover , input.button:hover , a.button:hover {
+.button:hover , .primary:hover , input.button:hover , a.button:hover {
 	box-shadow: inset 1px 1px 0px rgba(0,0,0, 0.2);
 	background:url(assets/search_btn_bg.jpg) repeat-x;
 }
@@ -51,6 +51,20 @@ input[type="search"] {
 	border-left:1px solid #cec9c1;
 	border-top:1px solid #cec9c1;
 	box-shadow: 0 1px 15px rgba(179,179,179, 0.3);
+}
+
+
+textarea, input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"] {
+    border: 1px solid #D9D0BF;
+    font-family:Arial, Helvetica, sans-serifl
+    font-size: 13px;
+    padding: 2px 5px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset, 1px 1px 0px #fff;
+}
+
+select {
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset, 1px 1px 0px #fff;
+	border: 1px solid #D9D0BF;
 }
 
 #header.row {
@@ -661,4 +675,69 @@ h2#starting_from {
 span.order-total {
 	color:#000 !important;
 	font-size:15px;
+}
+
+#billing, #shipping, #shipping_method, #payment, #order_details, #order_summary {
+    border: 1px solid #D9D0BF;
+	box-shadow:1px 1px 0 #fff inset;
+    border-radius: 4px 4px 4px 4px;
+}
+
+
+#billing legend, #shipping legend, #shipping_method legend, #payment legend, #order_details legend, #order_summary legend {
+    color: #403937;
+    font-size: 15px;
+    font-weight: normal;
+	background:#F2F1EF;
+	font-family: 'Telex',sans-serif;
+	margin-left: -7px;
+	margin-bottom:-2px;
+}
+
+
+p[data-hook="use_billing"] {
+   background-color: #ECE7DE;
+    border: 1px solid #D9D0BF;
+    float: right;
+    margin-top: -12px;
+    padding: 5px 6px 5px 8px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+#checkout-summary {
+    border:none;
+    margin-left: 0;
+	background:#ECE7DE;
+	border-radius: 4px;
+	overflow:hidden;
+}
+
+
+#checkout-summary h3 {
+    border-bottom: 1px solid #D9D0BF;
+	box-shadow:0px 1px 0 #fff;
+	background:#e4dbca;
+	font-size: 16px;
+}
+
+#checkout-summary table tbody tr, table tfoot tr {
+    border-bottom: 1px solid #D9D0BF;
+	box-shadow:0px 1px 0 #fff;
+}
+
+
+span.price, #checkout-summary table tr[data-hook="item_total"] td:last-child strong, #checkout-summary table #summary-order-total, #order_details td.price span, #order_details td.total span, #order_summary td.price span, #order_summary td.total span, table#cart-detail tbody#line_items tr td[data-hook="cart_item_price"], table#cart-detail tbody#line_items tr td[data-hook="cart_item_total"], div[data-hook="inside_cart_form"] #subtotal span.order-total {
+    color:#404042;
+    font-weight: bold;
+}
+
+
+.progress-steps li.current-first, .progress-steps li.current {
+    background-color: #3E3936;
+	text-shadow:none;
+}
+
+.progress-steps li {
+	text-shadow: 1px 1px 0 #FFFFFF;
+	color:#999;
 }
