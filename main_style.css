@@ -8,6 +8,10 @@ body {
 	font-family:Arial, Helvetica, sans-serif;
 }
 
+a {
+	color:#333;
+}
+
 a:hover {
 	color:#000 !important;
 }
@@ -62,9 +66,34 @@ textarea, input[type="date"], input[type="datetime"], input[type="datetime-local
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset, 1px 1px 0px #fff;
 }
 
+
+textarea:active, textarea:focus, input[type="date"]:active, input[type="date"]:focus, input[type="datetime"]:active, input[type="datetime"]:focus, input[type="datetime-local"]:active, input[type="datetime-local"]:focus, input[type="email"]:active, input[type="email"]:focus, input[type="month"]:active, input[type="month"]:focus, input[type="number"]:active, input[type="number"]:focus, input[type="password"]:active, input[type="password"]:focus, input[type="search"]:active, input[type="search"]:focus, input[type="tel"]:active, input[type="tel"]:focus, input[type="text"]:active, input[type="text"]:focus, select:active, select:focus, input[type="time"]:active, input[type="time"]:focus, input[type="url"]:active, input[type="url"]:focus, input[type="week"]:active, input[type="week"]:focus {
+    border-color: #a79e8d;
+}
+
 select {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2) inset, 1px 1px 0px #fff;
 	border: 1px solid #D9D0BF;
+}
+
+.flash.notice, .notice.errorExplanation {
+    background-color: #3E3936;
+	font-family: 'Telex', sans-serif;
+	font-size:20px;
+	text-transform:uppercase;
+	font-weight:normal;
+}
+
+.flash.error, .errorExplanation {
+    background-color: #ECE7DE;
+	color:#333;
+}
+
+.flash.error, .errorExplanation h2 {
+    color: #F13241;
+    font-size: 20px;
+    line-height: 14px;
+    text-shadow: 0 1px 0 #FFFFFF;
 }
 
 #header.row {
@@ -223,13 +252,13 @@ nav#taxonomies.sidebar-item .taxons-list.by_jewelry li a:hover {
 }
 
 .jcarousel-skin-tango .jcarousel-clip-horizontal {
-    height: 226px;
+    height: 250px;
     width: 100%;
 }
 
 .jcarousel-skin-tango .jcarousel-item {
-    height: 226px;
-	margin-top:30px;
+    height: 250px;
+	margin-top:20px;
 }
 
 .jcarousel-skin-tango .jcarousel-item-horizontal {
@@ -554,7 +583,7 @@ h2#starting_from {
 	margin-top:10px;
 }
 
-#ring_suggestions thead td , #cart-detail thead th {
+#ring_suggestions thead td , #cart-detail thead th , #line-items th {
 	height:30px;
 	background:#ece7de;
 	color:#403937;
@@ -564,6 +593,10 @@ h2#starting_from {
 	font-weight:bold;
 	text-align:center;
 	border-bottom:1px solid #d9d0bf;
+}
+
+#checkout_form_confirm table tbody tr, #checkout_form_confirm table tfoot tr , #order_summary table tfoot tr , #order_summary table tbody tr {
+	box-shadow:none;
 }
 
 #ring_suggestions thead td span {
@@ -740,4 +773,40 @@ span.price, #checkout-summary table tr[data-hook="item_total"] td:last-child str
 .progress-steps li {
 	text-shadow: 1px 1px 0 #FFFFFF;
 	color:#999;
+}
+
+.progress-steps li.completed-first, .progress-steps li.completed {
+	text-shadow:none;
+}
+
+.progress-steps li.completed-first:hover, .progress-steps li.completed:hover {
+    background-color: #3E3936;
+    color: #FFFFFF;
+}
+
+tr.line-item.stone .cart-item-image:before {
+	content:"";
+	display:block;
+	position:absolute;
+	width:50px;
+	height:50px;
+	margin-left: 2.5%;
+	margin-top:-30px;
+	background:url(assets/plus_cart_icon.png) no-repeat;
+}
+
+
+#order_details .steps-data h6, #order_summary .steps-data h6 {
+    border-bottom: 1px solid #D9D0BF;
+    box-shadow: 0 1px 0 #FFFFFF;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+#checkout_form_confirm legend , #order_summary legend {
+	margin-left:9px;
+}
+
+#order_summary h1 {
+	margin-left:13px;
 }
