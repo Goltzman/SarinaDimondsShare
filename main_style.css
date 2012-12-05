@@ -784,15 +784,27 @@ span.price, #checkout-summary table tr[data-hook="item_total"] td:last-child str
     color: #FFFFFF;
 }
 
-tr.line-item.stone .cart-item-image:before {
-	content:"";
-	display:block;
-	position:absolute;
-	width:50px;
-	height:50px;
-	margin-left: 2.5%;
-	margin-top:-30px;
-	background:url(assets/plus_cart_icon.png) no-repeat;
+td.cart-item-description.stone:before {
+     color: #d0c5b0;
+    content: "+";
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+    font-size: 34px;
+    margin-left: -39px;
+    margin-top: 5px;
+    position: absolute;
+    text-shadow: 1px 1px 0 #FFFFFF;
+    z-index: -1;
+}
+
+td.cart-item-description h4 {
+	display:inline-block;
+}
+
+td.cart-item-description img {
+	display:inline-block;
+	margin-top:3px;
 }
 
 
@@ -809,4 +821,8 @@ tr.line-item.stone .cart-item-image:before {
 
 #order_summary h1 {
 	margin-left:13px;
+}
+
+.cart-item-description {
+	vertical-align:top;
 }
