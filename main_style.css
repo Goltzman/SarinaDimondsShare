@@ -128,35 +128,17 @@ nav #main-nav-bar li#link-to-cart a {
 }*/
 
 #search-bar .search_btn {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	color: #2a2a2a;
-	background: -moz-linear-gradient(
-		top,
-		#e0dfd9 0%,
-		#cac8c1);
-	background: -webkit-gradient(
-		linear, left top, left bottom, 
-		from(#e0dfd9),
-		to(#cac8c1));
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	border: 1px solid #afafaf !important;
-	-moz-box-shadow:
-		0px 0px 0px rgba(255,255,255,0),
-		inset 1px 1px 0px rgba(255,255,255,1);
-	-webkit-box-shadow:
-		0px 0px 0px rgba(255,255,255,0),
-		inset 1px 1px 0px rgba(255,255,255,1);
-	box-shadow:
-		0px 0px 0px rgba(255,255,255,0),
-		inset 1px 1px 0px rgba(255,255,255,1);
-	text-shadow:
-		1px 1px 0px rgba(255,255,255,1),
-		0px 1px 0px rgba(255,255,255,0);
-		font-weight:normal;
-		height:23px;
+    background: none repeat scroll 0 0 #403937 !important;
+    border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    height: 23px;
+    padding: 4px 8px;
+    text-shadow: -1px -1px 0 #000000, 0 1px 0 rgba(255, 255, 255, 0);
 		
 }
 
@@ -241,6 +223,11 @@ nav#taxonomies.sidebar-item ul li {
 	width:55px;
 	height:54px;
 	margin-right:10px;
+	cursor:pointer;
+}
+
+nav#taxonomies.sidebar-item ul li:last-child {
+	margin-right:0;
 }
 
 .round_taxon {
@@ -273,27 +260,30 @@ nav#taxonomies.sidebar-item ul li {
 	height:54px;
 }
 
-nav#taxonomies.sidebar-item .taxons-list.by_jewelry li {
-	display:inline-block;
-	width:180px;
-	height:40px;
-	line-height:40px;
-	padding-left:20px;
-	text-align:left;
-	font-size:15px;
-	margin-left:20px;
-	margin-right:0;
-	background:url(assets/category_bullet.png) center left no-repeat;
+.solitaire_taxon {
+	background:url(assets/solitaire_icon.png) 0 0 no-repeat;
 }
 
-nav#taxonomies.sidebar-item .taxons-list.by_jewelry li a {
-	color:#403937;
-	font-size:15px;
+.solitaire_taxon:hover {
+	background:url(assets/solitaire_icon.png) 0 -54px no-repeat;
 }
 
-nav#taxonomies.sidebar-item .taxons-list.by_jewelry li a:hover {
-	color:#000 !important;
+.side_taxon {
+	background:url(assets/side_stones_icon.png) 0 0 no-repeat;
 }
+
+.side_taxon:hover {
+	background:url(assets/side_stones_icon.png) 0 -54px no-repeat;
+}
+
+.pave_taxon {
+	background:url(assets/pave_icon.png) 0 0 no-repeat;
+}
+
+.pave_taxon:hover {
+	background:url(assets/pave_icon.png) 0 -54px no-repeat;
+}
+
 
 .jcarousel-skin-tango .jcarousel-clip-horizontal {
     height: 250px;
@@ -561,6 +551,40 @@ h3 {
 }
 
 .help:hover:before {
+	content:"";
+	position:absolute;
+	display:block;
+	background:url(assets/help_box_tip.png) no-repeat;
+	width:13px;
+	height:10px;
+    margin-left: -18px;
+    margin-top: -6px;
+	z-index:10;
+}
+
+label.help {
+	background:url(assets/info_icon.png) left center no-repeat;
+	padding: 2px 0 1px 21px;
+}
+
+label.help:hover:after {
+	content: attr(title) "";
+	position:absolute;
+	display:block;
+	background:#443c39;
+	border:1px solid #fff;
+	color:#fff;
+	padding:3px 8px;
+	border-radius:4px;
+	margin-left: -30px;
+    margin-top: -48px;
+	box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+	z-index:9;
+	white-space:nowrap;
+	font-size:12px;
+}
+
+label.help:hover:before {
 	content:"";
 	position:absolute;
 	display:block;
@@ -892,6 +916,7 @@ td.cart-item-description img {
 	vertical-align:top;
 }
 
+/*
 .button , .primary , input.button , a.button {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
@@ -922,4 +947,22 @@ td.cart-item-description img {
 		1px 1px 0px rgba(255,255,255,1),
 		0px 1px 0px rgba(255,255,255,0);
 		font-weight:normal;
+}
+*/
+
+.button , .primary , input.button , a.button {
+    background:#403937 !important;
+    border: medium none;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 6px 12px;
+    text-shadow: -1px -1px 0 #000000, 0 1px 0 rgba(255, 255, 255, 0);
+}
+
+.button:hover , .primary:hover , input.button:hover , a.button:hover {
+	background:#160f0b !important;
 }
